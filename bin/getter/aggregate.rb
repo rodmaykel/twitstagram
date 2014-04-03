@@ -13,12 +13,19 @@ tweetsColl = db.collection('tweets')
 instagramsColl = db.collection('instagrams')
 
 puts "==== START SCRIPT ===="
+twitter = TwitterGet.new
 
 personsColl.find().each do |person|
-    
+  
+  puts person['twitter']  
   # Get+insert Twitter
-  twitter = Twitter.new(person['twitter'])
-  puts twitter.get_tweets.join(', ');
+  twitter.get_tweets(person['twitter']).each do |tweet|
+    tweet.each do |key, val|
+      puts "#{key}: #{val}"
+    end
+
+  
+  end
 
   # Get+insert Instagram
   # puts person['instagram']
