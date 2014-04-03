@@ -1,4 +1,4 @@
 twitstagram
 ===========
 
-View tweets and instagram photos of your favorite celebrity
+View tweets and instagram photos from your favorite celebrity groups

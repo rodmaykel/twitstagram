@@ -1,8 +1,8 @@
 run:
-	rails server
+	foreman start rails
 
 aggregate:
-	ruby bin/getter/aggregate.rb
+	foreman start aggregate
 
 build:
 	bundle install --without production
