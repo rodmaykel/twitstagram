@@ -1,0 +1,16 @@
+{
+  person_id: "rodmaykel",
+  twitter: "rodmaykel",
+  instagram: "33935610",
+  name: "Rod Michael Coronel",
+  photo_url: "PHOTO"
+}
+
+{
+  person_id: "annecurtissmith",
+  twitter: "annecurtissmith",
+  instagram: "3585673",
+  name: "Anne Curtis Smith",
+  photo_url: "PHOTO"
+}
+
