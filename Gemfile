@@ -14,7 +14,9 @@ group :production do
   gem 'rails_12factor', '0.0.2'
 end
 
-gem 'twitter', '5.8.0'
+gem "faraday", "~> 0.8.9"
+gem 'instagram', '0.11.0'
+gem 'twitter', '5.4.0' #5.8.0
 
 
 # ===============================================

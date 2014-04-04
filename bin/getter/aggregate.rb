@@ -1,6 +1,9 @@
 require 'rubygems'
 require 'mongo'
 require_relative './twitter.rb'
+require_relative './instagram.rb'
+
+require 'pp'
 
 DBNAME = 'twitstagram'
 host = 'localhost'
@@ -14,24 +17,31 @@ instagramsColl = db.collection('instagrams')
 
 puts "==== START SCRIPT ===="
 twitter = TwitterGet.new
+instagram = InstagramGet.new
 
 personsColl.find().each do |person|
   
-  puts person['twitter']  
   # Get+insert Twitter
+  puts "===Twitter: " + person['twitter']  
   twitter.get_tweets(person['twitter']).each do |tweet|
-    tweet.each do |key, val|
-      puts "#{key}: #{val}"
-    end
-
-  
+    pp tweet
   end
 
   # Get+insert Instagram
-  # puts person['instagram']
-
+  puts "===Instagram: " + person['instagram']
+  instagram.get_photos(person['instagram']).each do |photo|
+    pp photo
+  end
 
   puts "====================="
 end
 
 
+def insert_tweet 
+
+end
+
+
+def insert_instagram
+
+end
