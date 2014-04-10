@@ -1,47 +1,40 @@
 require 'rubygems'
-require 'mongo'
 require_relative './twitter.rb'
 require_relative './instagram.rb'
 
 require 'pp'
 
-DBNAME = 'twitstagram'
-host = 'localhost'
-port = Mongo::MongoClient::DEFAULT_PORT
+def insert_tweet (tweet) 
+  #pp tweet
+end
 
-client = Mongo::MongoClient.new(host, port)
-db = client.db(DBNAME)
-personsColl = db.collection('persons')
-tweetsColl = db.collection('tweets')
-instagramsColl = db.collection('instagrams')
+
+def insert_instagram (photo)
+  pp photo.images # standard_resolution, low_resolution, thumbnail
+end
+
 
 puts "==== START SCRIPT ===="
 twitter = TwitterGet.new
 instagram = InstagramGet.new
 
-personsColl.find().each do |person|
+personsColl.find().each do |subject| # TODO
   
   # Get+insert Twitter
-  puts "===Twitter: " + person['twitter']  
-  twitter.get_tweets(person['twitter']).each do |tweet|
-    pp tweet
+  puts "===Twitter: " + subject['twitter']  
+  twitter.get_tweets(subject['twitter']).each do |tweet|
+    insert_tweet(tweet)
   end
 
   # Get+insert Instagram
-  puts "===Instagram: " + person['instagram']
-  instagram.get_photos(person['instagram']).each do |photo|
-    pp photo
+  puts "===Instagram: " + subject['instagram']
+  instagram.get_photos(subject['instagram']).each do |photo|
+    insert_instagram(photo)
   end
 
   puts "====================="
 end
+puts "==== END SCRIPT ===="
 
 
-def insert_tweet 
 
-end
-
-
-def insert_instagram
-
-end
