@@ -1,4 +1,8 @@
 Twitstagram::Application.routes.draw do
+  resources :insta
+
+  resources :tweets
+
   resources :subjects
 
   # The priority is based upon order of creation: first created -> highest priority.

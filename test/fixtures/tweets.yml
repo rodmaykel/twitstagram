@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  subject_id: 1
+  tweet: MyString
+  created: 2014-04-11 00:43:06
+  photo: MyString
+
+two:
+  subject_id: 1
+  tweet: MyString
+  created: 2014-04-11 00:43:06
+  photo: MyString
