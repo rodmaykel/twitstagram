@@ -9,6 +9,7 @@ build:
 
 deploy:
 	git push heroku master
+	heroku run rake db:migrate
 
 migrate:
 	bundle exec rake db:migrate
