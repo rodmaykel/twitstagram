@@ -6,7 +6,10 @@ aggregate:
 
 build:
 	bundle install --without production
-	git commit -a -m "Update Gemfile.lock for Heroku"
 
 deploy:
+	git commit -a -m "Update Gemfile.lock for Heroku"
 	git push heroku master
+
+migrate:
+	bundle exec rake db:migrate

@@ -1,0 +1,33 @@
+<h1>Listing subjects</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Twitter</th>
+      <th>Instagram</th>
+      <th>Name</th>
+      <th>Photo url</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @subjects.each do |subject| %>
+      <tr>
+        <td><%= subject.twitter %></td>
+        <td><%= subject.instagram %></td>
+        <td><%= subject.name %></td>
+        <td><%= subject.photo_url %></td>
+        <td><%= link_to 'Show', subject %></td>
+        <td><%= link_to 'Edit', edit_subject_path(subject) %></td>
+        <td><%= link_to 'Destroy', subject, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Subject', new_subject_path %>
