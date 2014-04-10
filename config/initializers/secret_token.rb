@@ -9,4 +9,19 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Twitstagram::Application.config.secret_key_base = '9cf529cbe0ecffa3506501fb428879e4b9b7824ba95860eb67bbe7431e12c888b620de8efc3fc330ad8f5b33bdf864ee4434eec8797c0354a6abf3fdc26814f4'
+require 'securerandom'
+
+def secure_token
+  token_file = Rails.root.join('.secret')
+  if File.exist?(token_file)
+    # Use the existing token.
+    File.read(token_file).chomp
+  else
+    # Generate a new token and store it in token_file.
+    token = SecureRandom.hex(64)
+    File.write(token_file, token)
+    token
+  end
+end
+
+Twitstagram::Application.config.secret_key_base = secure_token
