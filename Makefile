@@ -18,3 +18,6 @@ gems:
 	bundle install --without production
 	bundle update
 	bundle install
+
+test:
+	bundle exec rspec
