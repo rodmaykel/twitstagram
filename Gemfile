@@ -34,6 +34,9 @@ gem 'twitter', '5.4.0' #5.8.0
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.2'
+gem 'compass-rails'
+gem 'compass'
+gem 'modular-scale', '1.0.6' 
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'

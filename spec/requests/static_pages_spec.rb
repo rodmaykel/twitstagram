@@ -10,7 +10,7 @@ describe "StaticPages" do
 
     it "should have the title 'About'" do
       visit '/static_pages/about'
-      expect(page).to have_title("About")
+      expect(page).to have_title("Twitstagram | About")
     end
   end
 
@@ -23,7 +23,7 @@ describe "StaticPages" do
 
     it "should have the title 'Contact'" do
       visit '/static_pages/contact'
-      expect(page).to have_title("Contact")
+      expect(page).to have_title("Twitstagram | Contact")
     end
   end
 
@@ -35,7 +35,7 @@ describe "StaticPages" do
 
     it "should have the title 'Terms and Conditions'" do
       visit '/static_pages/tnc'
-      expect(page).to have_title("Terms and Conditions")
+      expect(page).to have_title("Twitstagram | Terms and Conditions")
     end
 
   end
