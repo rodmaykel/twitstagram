@@ -5,6 +5,10 @@ Twitstagram::Application.routes.draw do
   match '/tnc', to: 'static_pages#tnc', via: 'get'
   match '/admin', to: 'static_pages#admin', via: 'get'
   
+  #groups 
+  match '/admin/groups/new', to: 'groups#new', via: 'get'
+  
+
   resources :insta
 
   resources :tweets
