@@ -71,6 +71,12 @@ describe "StaticPages" do
       expect(page).to have_title("Twitstagram | Admin")
     end
 
+    it "should have a link to 'Create group'" do
+      expect(page).to have_content('Create group')
+      click_link('Create group')
+      expect(page). to have_title("Create group")
+    end
+
   end
 
   describe "Application layout" do
