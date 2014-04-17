@@ -11,5 +11,8 @@ class StaticPagesController < ApplicationController
   def tnc
   end
 
+  def admin
+  end
+
 end
 

@@ -60,6 +60,19 @@ describe "StaticPages" do
 
   end
 
+  describe "Admin page" do
+    before { visit admin_path }
+
+    it "should have the content 'Admin'" do
+      expect(page).to have_content('Admin')
+    end
+
+    it "should have the title 'Admin'" do
+      expect(page).to have_title("Twitstagram | Admin")
+    end
+
+  end
+
   describe "Application layout" do
     before { visit root_path }
 

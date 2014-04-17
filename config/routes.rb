@@ -3,6 +3,8 @@ Twitstagram::Application.routes.draw do
   match '/about', to: 'static_pages#about', via: 'get'
   match '/contact', to: 'static_pages#contact', via: 'get'
   match '/tnc', to: 'static_pages#tnc', via: 'get'
+  match '/admin', to: 'static_pages#admin', via: 'get'
+  
   resources :insta
 
   resources :tweets
