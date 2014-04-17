@@ -1,6 +1,25 @@
 require 'spec_helper'
 
 describe "StaticPages" do
+  describe "Home page" do
+
+    it "should have the content 'Home'" do
+      visit '/static_pages/home'
+      expect(page).to have_content('Home')
+    end
+
+    it "should have the title 'Twitstagram'" do
+      visit '/static_pages/home'
+      expect(page).to have_title("Twitstagram")
+    end
+
+    it "should not have the title 'Home'" do
+      visit '/static_pages/home'
+      expect(page).not_to have_title("Home")    
+    end
+
+  end  
+
   describe "About page" do
 
     it "should have the content 'About'" do
@@ -39,5 +58,14 @@ describe "StaticPages" do
     end
 
   end
+
+  describe "Application layout" do
+    it "should have header and footer" do
+      visit '/static_pages/home'
+      expect(page).to have_content('Header')
+      expect(page).to have_content('Footer')
+    end
+  end
+
 
 end
