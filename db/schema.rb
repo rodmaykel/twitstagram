@@ -11,33 +11,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140410164510) do
-
-  create_table "insta", force: true do |t|
-    t.integer  "subject_id"
-    t.datetime "created"
-    t.string   "photo"
-    t.string   "caption"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "subjects", force: true do |t|
-    t.string   "twitter"
-    t.string   "instagram"
-    t.string   "name"
-    t.string   "photo_url"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "tweets", force: true do |t|
-    t.integer  "subject_id"
-    t.string   "tweet"
-    t.datetime "created"
-    t.string   "photo"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+ActiveRecord::Schema.define(version: 0) do
 
 end

@@ -9,12 +9,6 @@ Twitstagram::Application.routes.draw do
   match '/admin/groups/new', to: 'groups#new', via: 'get'
   
 
-  resources :insta
-
-  resources :tweets
-
-  resources :subjects
-
   match '/', to: 'static_pages#home', via: 'get'
 
   # The priority is based upon order of creation: first created -> highest priority.
