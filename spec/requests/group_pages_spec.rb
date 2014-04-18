@@ -3,17 +3,25 @@ require 'spec_helper'
 describe "Group Pages" do
   subject { page }
 
-  describe "group page" do
+  ###########
+  describe "show" do
+    let(:group) { FactoryGirl.create(:group) }
+    before { visit "/admin/groups/#{group.id}" }
 
+    it { should have_content(group.name) }
+    it { should have_content(group.description) }
+    it { should have_title(group.name) }
   end
 
-  describe "create page" do
+  ###########
+  describe "new" do
     before { visit '/admin/groups/new' }
     it { should have_content('Groups#new') }
     it { should have_title(full_title('Create group')) }
   end
 
-  describe "submit" do 
+  ###########
+  describe "create" do 
     before { visit '/admin/groups/new' }
     let(:submit) { "Submit" }
     
