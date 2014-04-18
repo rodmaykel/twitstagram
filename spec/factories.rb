@@ -1,8 +1,8 @@
 FactoryGirl.define do
   factory :group do
-    name "Ateneo WVT"
-    description "Stalk the Ateneo Women's Volleyball team"
-    category "sports"
-    photo "this_is_photo"
+    sequence(:name)  { |n| "Group #{n}" }
+    sequence(:description) { |n| "description_#{n}"}
+    sequence(:category) { |n| "category#{n}"}
+    sequence(:photo) { |n| "photo#{n}"}
   end
 end

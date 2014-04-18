@@ -30,6 +30,7 @@ gem "faraday", "~> 0.8.9"
 gem 'instagram', '0.11.0'
 gem 'twitter', '5.4.0' #5.8.0
 gem 'faker', '1.1.2'
+gem 'will_paginate', '3.0.4'
 
 # ===============================================
 

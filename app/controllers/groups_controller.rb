@@ -33,7 +33,7 @@ class GroupsController < ApplicationController
   end
 
   def index
-    @groups = Group.all
+    @groups = Group.paginate(page: params[:page])
   end
 
   private

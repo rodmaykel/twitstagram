@@ -5,19 +5,26 @@ describe "Group Pages" do
 
   describe "index" do
     before do
-      FactoryGirl.create(:group, name: "Group_1", description: "description_2", category: "category")
-      FactoryGirl.create(:group, name: "Group_2", description: "description_2", category: "category")
       visit "/admin/groups"
     end
 
     it { should have_title('All groups') }
     it { should have_content('All groups') }
 
-    it "should list each group" do
-      Group.all.each do |group|
-        expect(page).to have_selector('li', text: group.name)
+    describe "pagination" do
+
+      before(:all) { 60.times { FactoryGirl.create(:group) } }
+      after(:all)  { Group.delete_all }
+
+      it { should have_selector('div.pagination') }
+
+      it "should list each group" do
+        Group.paginate(page: 1).each do |group|
+          expect(page).to have_selector('li', text: group.name)
+        end
       end
     end
+
   end
 
   ###########
