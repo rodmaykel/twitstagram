@@ -11,6 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20140417171619) do
+
+  create_table "groups", force: true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.string   "photo"
+    t.string   "category"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "groups", ["category"], name: "index_groups_on_category"
+  add_index "groups", ["name"], name: "index_groups_on_name"
 
 end

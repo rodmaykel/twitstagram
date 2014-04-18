@@ -1,3 +1,23 @@
 <% provide(:title, 'Create group') %>
 <h1>Groups#new</h1>
-<p>Find me in app/views/groups/new.html.erb</p>
+
+
+
+    <%= form_for(@group, :url => {:action => "create", :controller => "groups"}) do |f| %>
+
+      <%= render 'shared/error_messages' %>
+      
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+
+      <%= f.label :description %>
+      <%= f.text_field :description %>
+
+      <%= f.label :category %>
+      <%= f.text_field :category %>
+
+      <%= f.label :photo, "Photo" %>
+      <%= f.text_field :photo %>
+
+      <%= f.submit "Submit", class: "btn btn-large btn-primary" %>
+    <% end %>

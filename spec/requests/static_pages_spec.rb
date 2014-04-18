@@ -13,7 +13,7 @@ describe "StaticPages" do
     end
 
     it "should not have the title 'Home'" do
-      expect(page).not_to have_title("Home")    
+      expect(page).not_to have_title("Home")
     end
 
   end  
