@@ -82,6 +82,7 @@ describe "Group Pages" do
     it { should have_content(group.name) }
     it { should have_content(group.description) }
     it { should have_title(group.name) }
+    it { should have_link("Edit") }
   end
 
   ###########
@@ -115,6 +116,9 @@ describe "Group Pages" do
       it "should create a user" do
         expect { click_button submit }.to change(Group, :count).by(1)
         uri = URI.parse(current_url)
+        expect(page).to have_content("Group added")
+        expect(page).to have_selector('div.alert.alert-success')
+
         expect("#{uri.path}").to include("admin/groups/")
       end
     

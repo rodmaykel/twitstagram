@@ -3,3 +3,5 @@
 <%= render 'shared/flash_messages' %>
 
 <%= @group.name %>, <%= @group.description %>
+
+<%= link_to "Edit", "/admin/groups/#{@group.id}/edit" %>

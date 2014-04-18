@@ -77,6 +77,12 @@ describe "StaticPages" do
       expect(page). to have_title("Create group")
     end
 
+    it "should have a link to 'View groups'" do
+      expect(page).to have_content('View groups')
+      click_link('View groups')
+      expect(page). to have_title("All groups")
+    end    
+
   end
 
   describe "Application layout" do
