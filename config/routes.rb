@@ -10,6 +10,9 @@ Twitstagram::Application.routes.draw do
   match '/admin/groups', to: 'groups#create', via: 'post'
   match '/admin/groups', to: 'groups#index', via: 'get'
   match '/admin/groups/:id', to: 'groups#show', via: 'get'
+  match '/admin/groups/:id', to: 'groups#update', via: 'patch'
+  match '/admin/groups/:id/edit', to: 'groups#edit', via: 'get'
+
 
   match '/', to: 'static_pages#home', via: 'get'
 

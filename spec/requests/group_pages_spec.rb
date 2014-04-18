@@ -3,6 +3,70 @@ require 'spec_helper'
 describe "Group Pages" do
   subject { page }
 
+  describe "index" do
+    before do
+      FactoryGirl.create(:group, name: "Group_1", description: "description_2", category: "category")
+      FactoryGirl.create(:group, name: "Group_2", description: "description_2", category: "category")
+      visit "/admin/groups"
+    end
+
+    it { should have_title('All groups') }
+    it { should have_content('All groups') }
+
+    it "should list each group" do
+      Group.all.each do |group|
+        expect(page).to have_selector('li', text: group.name)
+      end
+    end
+  end
+
+  ###########
+  describe "edit" do 
+    let(:group) { FactoryGirl.create(:group) }
+    before { visit "/admin/groups/#{group.id}/edit" }
+    let(:submit) { "Submit" }
+
+    describe "page" do
+      it { should have_content("Update group") }
+      it { should have_title("Update group") }
+    end
+
+    describe "with invalid information" do
+      let(:new_name)  { "" }
+      let(:new_description)  { "" }
+      it "should not edit the group" do
+        fill_in "Name", with: new_name
+        click_button submit
+        expect(page).to have_content("Error")
+      end
+    end
+
+    describe "with valid information" do 
+      let(:new_name)  { "New Name" }
+      let(:new_description) { "New description" }
+      let(:new_category) { "new_category" }
+      let(:submit) { "Submit" }
+
+      before do
+        fill_in "Name",             with: new_name
+        fill_in "Description",      with: new_description
+        fill_in "Category",         with: new_category
+        click_button submit
+      end
+
+      it { should have_title(new_name) }
+      it { should have_content("Group updated") }
+      it { should have_selector('div.alert.alert-success') }
+      specify { expect(group.reload.name).to  eq new_name }
+      specify { expect(group.reload.description).to eq new_description }
+    end
+
+    #TODO: Test when the user submits an update to a non-existing group.id
+
+    #TODO: Test when the user goes to edit of a non-existing group.id
+
+  end
+
   ###########
   describe "show" do
     let(:group) { FactoryGirl.create(:group) }
@@ -30,8 +94,6 @@ describe "Group Pages" do
         expect { click_button submit }.not_to change(Group, :count)
         expect(page).to have_content("Error")
       end
-
-
     end
 
     describe "with valid information" do
