@@ -80,7 +80,7 @@ describe "Subject Pages" do
     before { visit "/admin/groups/#{group.id}/subjects/#{group.subjects[0].id}/delete" }
 
     it "should be deleted" do
-      expect(page).to have_content("Success")
+      expect(page).to have_content("Delete success")
       expect(Subject.find_by_id(group.subjects[0].id) == nil)
       uri = URI.parse(current_url)
       expect("#{uri.path}").to include("admin/groups/#{group.id}")

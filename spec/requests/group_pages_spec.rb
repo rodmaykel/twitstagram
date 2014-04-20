@@ -19,6 +19,8 @@ describe "Group Pages" do
       it "should list each group" do
         Group.paginate(page: 1).each do |group|
           expect(page).to have_selector('li', text: group.name)
+          expect(page).to have_link("Delete", href: "/admin/groups/#{group.id}/delete")
+
         end
       end
     end
@@ -123,6 +125,19 @@ describe "Group Pages" do
     
     end
   
+  end
+
+  ###########
+  describe "destroy" do
+    let(:group) { FactoryGirl.create(:group) }
+    before { visit "/admin/groups/#{group.id}/delete" }
+
+    it "should be deleted" do
+      expect(page).to have_content("Delete success")
+      expect(Group.find_by_id(group.id) == nil)
+      uri = URI.parse(current_url)
+      expect("#{uri.path}").to include("admin/groups")
+    end
   end
 
 end

@@ -1,4 +1,7 @@
 <% provide(:title, 'All groups') %>
+
+<%= render 'shared/flash_messages' %>
+
 <h1>All groups</h1>
 
 <%= will_paginate %>
@@ -6,7 +9,7 @@
 <ul class="groups">
   <% @groups.each do |group| %>
     <li>
-      <%= link_to group.name, "/admin/groups/#{group.id}" %>
+      <%= link_to group.name, "/admin/groups/#{group.id}" %> | <%= link_to "Delete", "/admin/groups/#{group.id}/delete" %>
     </li>
   <% end %>
 </ul>

@@ -39,6 +39,13 @@ class GroupsController < ApplicationController
     @groups = Group.paginate(page: params[:page])
   end
 
+  def destroy
+    @group = Group.find(params[:id])
+    @group.destroy
+    flash[:success] = 'Delete success'
+    redirect_to "/admin/groups"
+  end
+
   private
     def group_params
       params.require(:group).permit(:name, :description, :category, :photo)
