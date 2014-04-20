@@ -83,6 +83,7 @@ describe "Group Pages" do
     it { should have_content(group.description) }
     it { should have_title(group.name) }
     it { should have_link("Edit") }
+    
   end
 
   ###########

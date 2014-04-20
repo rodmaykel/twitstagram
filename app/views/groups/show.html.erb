@@ -5,3 +5,5 @@
 <%= @group.name %>, <%= @group.description %>
 
 <%= link_to "Edit", "/admin/groups/#{@group.id}/edit" %>
+
+<%= render 'groups/subject_new_form' %>

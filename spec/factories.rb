@@ -5,4 +5,11 @@ FactoryGirl.define do
     sequence(:category) { |n| "category#{n}"}
     sequence(:photo) { |n| "photo#{n}"}
   end
+  factory :subject do
+    twitter "rodmaykel"
+    instagram "777777"
+    photo "photo"
+    name "Rod Michael Coronel"
+    group
+  end
 end

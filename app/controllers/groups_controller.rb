@@ -16,6 +16,7 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
+    @subject = Subject.new
   end
 
   def edit

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140417171619) do
+ActiveRecord::Schema.define(version: 20140419162302) do
 
   create_table "groups", force: true do |t|
     t.string   "name"
@@ -24,5 +24,17 @@ ActiveRecord::Schema.define(version: 20140417171619) do
 
   add_index "groups", ["category"], name: "index_groups_on_category"
   add_index "groups", ["name"], name: "index_groups_on_name"
+
+  create_table "subjects", force: true do |t|
+    t.integer  "group_id"
+    t.string   "twitter"
+    t.string   "instagram"
+    t.string   "name"
+    t.string   "photo"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "subjects", ["group_id"], name: "index_subjects_on_group_id"
 
 end
