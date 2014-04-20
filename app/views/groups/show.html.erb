@@ -7,3 +7,18 @@
 <%= link_to "Edit", "/admin/groups/#{@group.id}/edit" %>
 
 <%= render 'groups/subject_new_form' %>
+
+
+<% if @group.subjects.any? %>
+  <h3>Subjects under this group</h3>
+
+   <%= will_paginate @subjects %>
+
+   <ul class="groups">
+    <% @subjects.each do |subject| %>
+      <li>
+        <%= subject.name %> | <%= link_to "Delete", "/admin/groups/#{@group.id}/subjects/#{subject.id}/delete" %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>

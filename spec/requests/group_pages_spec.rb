@@ -4,9 +4,7 @@ describe "Group Pages" do
   subject { page }
 
   describe "index" do
-    before do
-      visit "/admin/groups"
-    end
+    before { visit "/admin/groups" }
 
     it { should have_title('All groups') }
     it { should have_content('All groups') }

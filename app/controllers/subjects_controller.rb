@@ -2,6 +2,7 @@ class SubjectsController < ApplicationController
   
   def create
     @group = Group.find(params[:id])
+    @subjects = @group.subjects.paginate(page: params[:page])
     @subject = @group.subjects.build(subject_params)
     if @subject.save
       flash[:success] = 'Subject added'
@@ -12,6 +13,12 @@ class SubjectsController < ApplicationController
     end
   end
 
+  def destroy
+    @group = Group.find(params[:id])
+    @group.subjects.destroy(params[:s_id])
+    flash[:success] = 'Delete success'
+    redirect_to "/admin/groups/#{@group.id}"
+  end
 
   private
     def subject_params

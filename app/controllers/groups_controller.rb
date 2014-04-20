@@ -16,6 +16,7 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
+    @subjects = @group.subjects.paginate(page: params[:page])
     @subject = Subject.new
   end
 
