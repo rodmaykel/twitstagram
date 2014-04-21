@@ -1,11 +1,11 @@
 require 'spec_helper'
 
 describe Photo do
-  let(:subj) { FactoryGirl.create(:subject) }
+  let(:group) { FactoryGirl.create(:group) }
     
   before do
-    #@subject = group.subjects.build(twitter: "rodmaykel", instagram: "777777", name: "Rod Coronel", photo: "photo")
-    @photo = subj.photos.build(caption: "caption", created: 1.day.ago, photo: "photo", instagram_id: "1")
+    @subject = group.subjects.create(twitter: "rodmaykel", instagram: "777777", name: "Rod Coronel", photo: "photo")
+    @photo = @subject.photos.build(caption: "caption", created: 1.day.ago, photo: "photo", instagram_id: "1")
   end
 
   subject { @photo }
@@ -19,7 +19,7 @@ describe Photo do
   it { should be_valid }
 
   it { should respond_to(:subject) }
-  its(:subject) { should eq subj }
+  its(:subject) { should eq @subject }
 
   describe "photo validation" do
     before {@photo.photo = ''}
