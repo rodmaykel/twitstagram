@@ -1,3 +1,10 @@
+
+APP_PATH = File.expand_path('../../../config/application',  __FILE__)
+require File.expand_path('../../../config/boot',  __FILE__)
+require APP_PATH
+Rails.application.require_environment!
+
+
 require 'rubygems'
 require_relative './twitter.rb'
 require_relative './instagram.rb'
@@ -5,7 +12,7 @@ require_relative './instagram.rb'
 require 'pp'
 
 def insert_tweet (tweet) 
-  #pp tweet
+  pp tweet.text
 end
 
 
@@ -18,7 +25,7 @@ puts "==== START SCRIPT ===="
 twitter = TwitterGet.new
 instagram = InstagramGet.new
 
-personsColl.find().each do |subject| # TODO
+Subject.all().each do |subject| # TODO
   
   # Get+insert Twitter
   puts "===Twitter: " + subject['twitter']  

@@ -5,7 +5,6 @@ describe Subject do
   let(:group) { FactoryGirl.create(:group) }
   
   before do
-    # This code is not idiomatically correct.
     @subject = group.subjects.build(twitter: "rodmaykel", instagram: "777777", name: "Rod Coronel", photo: "photo")
   end
 
@@ -21,6 +20,10 @@ describe Subject do
 
   it { should respond_to(:group) }
   its(:group) { should eq group }
+
+  it { should respond_to(:tweets) }
+  it { should respond_to(:photos) }
+
 
   describe "name validation" do
     before {@subject.name = ''}

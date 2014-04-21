@@ -21,3 +21,6 @@ gems:
 
 test:
 	bundle exec rspec
+
+test-server:
+	echo "TODO"
