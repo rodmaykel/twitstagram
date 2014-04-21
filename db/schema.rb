@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140421155659) do
+ActiveRecord::Schema.define(version: 20140421175851) do
 
   create_table "groups", force: true do |t|
     t.string   "name"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20140421155659) do
   end
 
   add_index "photos", ["instagram_id"], name: "index_photos_on_instagram_id"
+  add_index "photos", ["subject_id", "instagram_id"], name: "index_photos_on_subject_id_and_instagram_id", unique: true
   add_index "photos", ["subject_id"], name: "index_photos_on_subject_id"
 
   create_table "subjects", force: true do |t|
@@ -60,6 +61,7 @@ ActiveRecord::Schema.define(version: 20140421155659) do
     t.datetime "updated_at"
   end
 
+  add_index "tweets", ["subject_id", "tweet_id"], name: "index_tweets_on_subject_id_and_tweet_id", unique: true
   add_index "tweets", ["subject_id"], name: "index_tweets_on_subject_id"
   add_index "tweets", ["tweet_id"], name: "index_tweets_on_tweet_id"
 
