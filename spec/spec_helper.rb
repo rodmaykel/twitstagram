@@ -49,6 +49,7 @@ Spork.prefork do
     #     --seed 1234
     config.order = "random"
     config.include Capybara::DSL
+    #Capybara.current_driver = Capybara.javascript_driver
   end
 end
 

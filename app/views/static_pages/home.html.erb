@@ -1,3 +1,12 @@
 
 <h1>Home</h1>
 <p>Find me in app/views/static_pages/home.html.erb</p>
+
+<%= form_tag('/search', method: :post) do %>
+
+  <%= render 'shared/error_messages' %>
+
+  <%= text_field_tag 'query' %>
+
+  <%= submit_tag 'Search' %>  
+<% end %>
