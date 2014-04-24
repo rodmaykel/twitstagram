@@ -3,7 +3,13 @@ require 'spec_helper'
 describe "StaticPages" do
   describe "Home page" do
     before { visit root_path }
-    
+    before do
+      Group.create(name: 'hahamanyss', description: 'Stalk the Ateneo WVT', category: 'Sports', photo: '')
+      Group.create(name: 'manyss', description: 'Stalk the Ateneo WVT', category: 'Sports', photo: '')
+      Group.create(name: 'hahamany', description: 'Stalk the Ateneo WVT', category: 'Sports', photo: '')
+      Group.create(name: 'panggulo', description: 'Stalk the Ateneo WVT', category: 'Sports', photo: '')
+    end
+
     it "should have the content 'Home'" do
       expect(page).to have_content('Home')
     end
@@ -14,6 +20,13 @@ describe "StaticPages" do
 
     it "should not have the title 'Home'" do
       expect(page).not_to have_title("Home")
+    end
+
+    it "should have a list of groups" do
+      Group.get_recent do |group|
+        expect(page).to have_selector('li', text: group.name)
+      end
+      expect(Group.get_recent.count) == 4
     end
 
   end  

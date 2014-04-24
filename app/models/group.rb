@@ -3,4 +3,8 @@ class Group < ActiveRecord::Base
   validates :name, presence: true
   validates :description, presence: true
   validates :category, presence: true
+
+  def self.get_recent
+    self.all.limit(4)
+  end
 end

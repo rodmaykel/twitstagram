@@ -1,5 +1,6 @@
 class StaticPagesController < ApplicationController
   def home
+    @groups = Group.get_recent
   end
 
   def about

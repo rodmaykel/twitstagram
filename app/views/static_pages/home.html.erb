@@ -11,6 +11,14 @@
 
 <% end %>
 
-<%= link_to "Browse groups", "/search" %>
+<%= link_to "Browse groups", "/search" %> <br /> <br />
 
-The home page can also contain "featured groups" or a listing of categories (need to implement a categories page for this)
+Featured groups
+
+<ul class="groups">
+  <% @groups.each do |group| %>
+    <li>
+      <%= link_to group.name, "/groups/#{group.id}/#{group.name.parameterize}" %>
+    </li>
+  <% end %>
+</ul>
