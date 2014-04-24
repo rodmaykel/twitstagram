@@ -58,7 +58,7 @@ Subject.all().each do |subject| # TODO
   puts "==== " + subject['twitter'] + " ===="
 
   # Get+insert Twitter
-  if subject['twitter'] then
+  if subject['twitter'] != '' then
     puts "===Twitter: " + subject['twitter']  
     twitter.get_tweets(subject['twitter']).each do |tweet|
       insert_tweet(subject, tweet)
@@ -66,7 +66,7 @@ Subject.all().each do |subject| # TODO
   end
 
   # Get+insert Instagram
-  if subject['instagram'] then
+  if subject['instagram'] != '' then
     puts "===Instagram: " + subject['instagram']
     instagram.get_photos(subject['instagram']).each do |photo|
       insert_instagram(subject, photo)
