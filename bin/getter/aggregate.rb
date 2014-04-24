@@ -58,17 +58,21 @@ Subject.all().each do |subject| # TODO
   puts "==== " + subject['twitter'] + " ===="
 
   # Get+insert Twitter
-  puts "===Twitter: " + subject['twitter']  
-  twitter.get_tweets(subject['twitter']).each do |tweet|
-    insert_tweet(subject, tweet)
+  if subject['twitter'] then
+    puts "===Twitter: " + subject['twitter']  
+    twitter.get_tweets(subject['twitter']).each do |tweet|
+      insert_tweet(subject, tweet)
+    end
   end
 
   # Get+insert Instagram
-  puts "===Instagram: " + subject['instagram']
-  instagram.get_photos(subject['instagram']).each do |photo|
-    insert_instagram(subject, photo)
+  if subject['instagram'] then
+    puts "===Instagram: " + subject['instagram']
+    instagram.get_photos(subject['instagram']).each do |photo|
+      insert_instagram(subject, photo)
+    end
   end
-
+  
 end
 puts "==== END SCRIPT ===="
 

@@ -8,6 +8,10 @@ class SearchController < ApplicationController
   end
 
   def view
-    @groups = Group.where("name like ?", "%#{params[:query]}%").paginate(page: params[:page])
+    if params[:query] then
+      @groups = Group.where("name like ?", "%#{params[:query]}%").paginate(page: params[:page])
+    else
+      @groups = Group.all.paginate(page: params[:page])
+    end
   end
 end

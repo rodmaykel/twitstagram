@@ -76,4 +76,18 @@ describe "SearchPages" do
 
   end
 
+  describe "Search all" do 
+    before { visit "/search" }
+    before(:all) { 60.times { FactoryGirl.create(:group) } }
+    after(:all)  { Group.delete_all }
+      
+    it "should have a paginated list of groups" do
+      expect(page).to have_selector('div.pagination')
+      expect(page).to have_content("60 Results found")
+      Group.all.paginate(page: 1).each do |group|
+        expect(page).to have_selector('li', text: group.name)
+      end
+    end
+  end
+
 end
