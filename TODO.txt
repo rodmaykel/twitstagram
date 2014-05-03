@@ -1,10 +1,15 @@
 
-- Add tweets and photos method to Group model
+OK- Add tweets and photos method to Group model
 - Tweets page
 - Photos page
 
 
+- modify admin group creation flow
 
+- FB login/registration
+- Authentication in the admin page
+
+- Following 
 
 
 
@@ -18,3 +23,4 @@
 
 - /category/search
 - /category/search/query
+

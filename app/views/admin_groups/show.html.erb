@@ -4,9 +4,11 @@
 
 <h3><%= @group.name %></h3>
 
+<p><%= @group.description %></>
+
 <%= link_to "Edit", "/admin/groups/#{@group.id}/edit" %>
 
-<%= render 'groups/subject_new_form' %>
+<%= render 'admin_groups/subject_new_form' %>
 
 
 <% if @group.subjects.any? %>

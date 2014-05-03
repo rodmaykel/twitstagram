@@ -6,16 +6,16 @@ Twitstagram::Application.routes.draw do
   match '/admin', to: 'static_pages#admin', via: 'get'
   
   #groups 
-  match '/admin/groups/new', to: 'groups#new', via: 'get'
-  match '/admin/groups', to: 'groups#create', via: 'post'
-  match '/admin/groups', to: 'groups#index', via: 'get'
-  match '/admin/groups/:id', to: 'groups#show', via: 'get'
-  match '/admin/groups/:id', to: 'groups#update', via: 'patch'
-  match '/admin/groups/:id/edit', to: 'groups#edit', via: 'get'
-  match '/admin/groups/:id/delete', to: 'groups#destroy', via: 'get'
+  match '/admin/groups/new', to: 'admin_groups#new', via: 'get'
+  match '/admin/groups', to: 'admin_groups#create', via: 'post'
+  match '/admin/groups', to: 'admin_groups#index', via: 'get'
+  match '/admin/groups/:id', to: 'admin_groups#show', via: 'get'
+  match '/admin/groups/:id', to: 'admin_groups#update', via: 'patch'
+  match '/admin/groups/:id/edit', to: 'admin_groups#edit', via: 'get'
+  match '/admin/groups/:id/delete', to: 'admin_groups#destroy', via: 'get'
 
-  match '/admin/groups/:id/subjects', to: 'subjects#create', via: 'post'
-  match '/admin/groups/:id/subjects/:s_id/delete', to: 'subjects#destroy', via: 'get'
+  match '/admin/groups/:id/subjects', to: 'admin_subjects#create', via: 'post'
+  match '/admin/groups/:id/subjects/:s_id/delete', to: 'admin_subjects#destroy', via: 'get'
 
   #search
   match '/search', to: 'search#view', via: 'get'

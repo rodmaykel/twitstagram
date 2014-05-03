@@ -1,4 +1,4 @@
-class GroupsController < ApplicationController
+class AdminGroupsController < ApplicationController
   def new
     @group = Group.new
   end
