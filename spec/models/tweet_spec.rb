@@ -15,6 +15,7 @@ describe Tweet do
   it { should respond_to(:created) }
   it { should respond_to(:photo) }
   it { should respond_to(:tweet_id) }
+  #it { should respond_to(:from_group) }
 
   it { should be_valid }
 
@@ -35,4 +36,5 @@ describe Tweet do
     before { @tweet.subject_id = nil }
     it { should_not be_valid }
   end
+
 end

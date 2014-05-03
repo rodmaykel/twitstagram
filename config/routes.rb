@@ -21,6 +21,7 @@ Twitstagram::Application.routes.draw do
   match '/search', to: 'search#view', via: 'get'
   match '/search', to: 'search#redirect', via: 'post'
   match '/search/:query', to: 'search#view', via: 'get'
+  
 
   #view
   match '/groups/:id/:name', to: 'view#view', via: 'get'

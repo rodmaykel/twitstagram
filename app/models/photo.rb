@@ -3,4 +3,10 @@ class Photo < ActiveRecord::Base
   validates :subject_id, presence: true
   validates :photo, presence: true
   validates :instagram_id, presence: true
+
+  def self.from_group(group) 
+    subject_ids = group.subjects.map(&:id).join(',')
+    where("subject_id IN (#{subject_ids})");
+    # TODO: need to optimize this
+  end
 end

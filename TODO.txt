@@ -1,0 +1,20 @@
+
+- Add tweets and photos method to Group model
+- Tweets page
+- Photos page
+
+
+
+
+
+
+
+
+- move to private repo on bitbucket
+
+- category on form is a dropdown 
+
+- delete should be POST and protected by CSRF (for created by rails form helper)
+
+- /category/search
+- /category/search/query

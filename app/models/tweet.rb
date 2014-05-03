@@ -3,4 +3,10 @@ class Tweet < ActiveRecord::Base
   validates :subject_id, presence: true
   validates :text, presence: true
   validates :tweet_id, presence: true
+
+  def self.from_group(group)
+    subject_ids = group.subjects.map(&:id).join(',')
+    where("subject_id IN (#{subject_ids})");
+    # TODO: need to optimize this
+  end
 end

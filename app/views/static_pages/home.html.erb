@@ -11,7 +11,7 @@
 
 <% end %>
 
-<%= link_to "Browse groups", "/search" %> <br /> <br />
+<%= link_to "Browse groups", "/search" %> &raquo; <br /> <br />
 
 Featured groups
 
@@ -21,4 +21,16 @@ Featured groups
       <%= link_to group.name, "/groups/#{group.id}/#{group.name.parameterize}" %>
     </li>
   <% end %>
+</ul>
+
+
+Browse our categories
+
+<ul>
+<li><a href="#">Entertainment</a></li>
+<li><a href="#">Sports</a></li>
+<li><a href="#">Politics</a></li>
+<li><a href="#">Movies</a></li>
+<li><a href="#">TV Series</a></li>
+
 </ul>

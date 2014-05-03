@@ -7,4 +7,12 @@ class Group < ActiveRecord::Base
   def self.get_recent
     self.all.limit(4)
   end
+
+  def tweets
+    Tweet.from_group(self)
+  end
+
+  def photos
+    Photo.from_group(self)
+  end
 end

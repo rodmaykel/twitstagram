@@ -7,10 +7,6 @@ aggregate:
 build:
 	bundle install --without production
 
-deploy:
-	git push heroku master
-	heroku run rake db:migrate
-
 migrate:
 	bundle exec rake db:migrate
 
@@ -23,4 +19,14 @@ test:
 	bundle exec rspec
 
 test-server:
+	echo "TODO"
+
+deploy:
+	git push heroku master
+	heroku run rake db:migrate
+
+aggregate-prod:
+	heroku run ruby bin/getter/aggregate.rb
+
+migrate-prod:
 	echo "TODO"

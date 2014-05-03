@@ -31,7 +31,7 @@ describe "SearchPages" do
         fill_in "query", with: 'zero'
       end
 
-      it "should go to search page" do
+      it "should go to search page with zero results" do
         click_button submit
         uri = URI.parse(current_url)
         expect("#{uri.path}").to include("search/zero")
@@ -89,5 +89,15 @@ describe "SearchPages" do
       end
     end
   end
+
+  describe "Category listing" do
+  
+  end
+
+  describe "Category search" do
+
+  end
+
+
 
 end

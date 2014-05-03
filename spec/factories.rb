@@ -14,10 +14,10 @@ FactoryGirl.define do
     end
   end
   factory :subject do
-    twitter "rodmaykel"
-    instagram "777777"
-    photo "photo"
-    name "Rod Michael Coronel"
+    sequence(:twitter) { |n| "twitter_name_#{n}" }
+    sequence(:instagram) { |n| "instagram_#{n}" }
+    sequence(:photo) { |n| "photo_#{n}" }
+    sequence(:name) { |n|  "Name_#{n}" }
     group
   end
 end
