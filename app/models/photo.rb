@@ -6,7 +6,7 @@ class Photo < ActiveRecord::Base
 
   def self.from_group(group) 
     subject_ids = group.subjects.map(&:id).join(',')
-    where("subject_id IN (#{subject_ids})");
+    where("subject_id IN (#{subject_ids})").order('created DESC');
     # TODO: need to optimize this
   end
 end

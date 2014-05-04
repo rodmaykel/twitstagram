@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "Group Pages" do
+describe "Admin Group Pages" do
   subject { page }
 
   describe "index" do

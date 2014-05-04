@@ -1,0 +1,22 @@
+<h3><%= @group.name %></h3>
+<p>Description: <%= @group.description %></p>
+<p>Category: <%= @group.category %></p>
+
+<%= link_to "Members", "/groups/#{@group.id}/#{@group.name.parameterize}" %> &sdot;
+<%= link_to "Tweets", "/groups/#{@group.id}/#{@group.name.parameterize}/tweets" %> &sdot;
+<%= link_to "Photos", "/groups/#{@group.id}/#{@group.name.parameterize}/photos" %>
+
+<hr />
+
+<p><b>Photos</b></p>
+
+<%= will_paginate @photos %>
+
+<ul class="photos">
+  <% @photos.each do |photo| %>
+    <li>
+      <%= photo.subject.name %> : <%= photo.caption %> <br />
+      <img src="<%= photo.photo %>" width="100" />
+    </li>
+  <% end %>
+</ul>

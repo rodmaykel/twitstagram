@@ -5,8 +5,7 @@ Twitstagram::Application.routes.draw do
   match '/tnc', to: 'static_pages#tnc', via: 'get'
   match '/admin', to: 'static_pages#admin', via: 'get'
   
-  #groups 
-  match '/admin/groups/new', to: 'admin_groups#new', via: 'get'
+  #admin_group
   match '/admin/groups', to: 'admin_groups#create', via: 'post'
   match '/admin/groups', to: 'admin_groups#index', via: 'get'
   match '/admin/groups/:id', to: 'admin_groups#show', via: 'get'
@@ -23,8 +22,10 @@ Twitstagram::Application.routes.draw do
   match '/search/:query', to: 'search#view', via: 'get'
   
 
-  #view
-  match '/groups/:id/:name', to: 'view#view', via: 'get'
+  #group
+  match '/groups/:id/:name', to: 'group#view', via: 'get'
+  match '/groups/:id/:name/tweets', to: 'group#tweets', via: 'get'
+  match '/groups/:id/:name/photos', to: 'group#photos', via: 'get'
 
   match '/', to: 'static_pages#home', via: 'get'
 

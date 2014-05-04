@@ -12,6 +12,10 @@ OK- modify admin group creation flow
 - home page for users
 
 
+#===========================================
+REFACTOR:
+- photo and tweet creation has too many codes (use factory girl)
+
 
 #===========================================
 
