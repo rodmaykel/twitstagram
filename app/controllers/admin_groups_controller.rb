@@ -1,16 +1,14 @@
 class AdminGroupsController < ApplicationController
-  def new
-    @group = Group.new
-  end
 
   def create
     @group = Group.new(group_params)
+    @groups = Group.paginate(page: params[:page])
     if @group.save
       flash[:success] = "Group added"
       redirect_to "/admin/groups/#{@group.id}"
     else
       @errors = @group.errors
-      render 'new'
+      render 'index'
     end
   end
 
@@ -36,6 +34,7 @@ class AdminGroupsController < ApplicationController
   end
 
   def index
+    @group = Group.new
     @groups = Group.paginate(page: params[:page])
   end
 

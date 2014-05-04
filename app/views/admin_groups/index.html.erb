@@ -1,8 +1,14 @@
-<% provide(:title, 'All groups') %>
+<% provide(:title, 'Groups') %>
 
 <%= render 'shared/flash_messages' %>
 
-<h3>All groups</h3>
+<h3>Groups</h3>
+
+<p>Create new group</p>
+
+<%= render 'admin_groups/group_new_form' %>
+
+<p>All Groups</p>
 
 <%= will_paginate @groups %>
 

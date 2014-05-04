@@ -1,23 +1,23 @@
 
 OK- Add tweets and photos method to Group model
+OK- modify admin group creation flow
 - Tweets page
 - Photos page
 
 
-- modify admin group creation flow
-
 - FB login/registration
 - Authentication in the admin page
 
-- Following 
+- Following groups by users
+- home page for users
 
 
 
-
+#===========================================
 
 - move to private repo on bitbucket
 
-- category on form is a dropdown 
+- category on form is a dropdown (what categories to define?)
 
 - delete should be POST and protected by CSRF (for created by rails form helper)
 

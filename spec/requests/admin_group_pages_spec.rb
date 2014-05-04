@@ -6,8 +6,9 @@ describe "Group Pages" do
   describe "index" do
     before { visit "/admin/groups" }
 
-    it { should have_title('All groups') }
-    it { should have_content('All groups') }
+    it { should have_title('Groups') }
+    it { should have_content('All Groups') }
+    it { should have_content('Create new group') }
 
     describe "pagination" do
 
@@ -87,15 +88,8 @@ describe "Group Pages" do
   end
 
   ###########
-  describe "new" do
-    before { visit '/admin/groups/new' }
-    it { should have_content('Groups#new') }
-    it { should have_title(full_title('Create group')) }
-  end
-
-  ###########
   describe "create" do 
-    before { visit '/admin/groups/new' }
+    before { visit '/admin/groups' }
     let(:submit) { "Submit" }
     
     describe "with invalid information" do
