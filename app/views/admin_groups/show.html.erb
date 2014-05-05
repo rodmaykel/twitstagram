@@ -19,7 +19,7 @@
    <ul class="groups">
     <% @subjects.each do |subject| %>
       <li>
-        <%= subject.name %> | <%= link_to "Delete", "/admin/groups/#{@group.id}/subjects/#{subject.id}/delete" %>
+        <%= link_to subject.name, "/admin/groups/#{@group.id}/subjects/#{subject.id}/edit" %> | <%= link_to "Delete", "/admin/groups/#{@group.id}/subjects/#{subject.id}/delete" %>
       </li>
     <% end %>
   </ul>

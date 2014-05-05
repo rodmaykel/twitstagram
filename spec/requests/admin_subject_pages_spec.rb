@@ -68,6 +68,53 @@ describe "Subject Pages" do
 
   end
 
+  describe "edit subject" do 
+    let(:group) { FactoryGirl.create(:group_with_subjects) }
+    before { visit "/admin/groups/#{group.id}/subjects/#{group.subjects.first.id}/edit" }
+    let(:submit) { "Submit" }
+
+    describe "page" do
+      it { should have_content("Update subject") }
+      it { should have_title("Update subject") }
+    end
+
+    describe "with invalid information" do
+      let(:new_name)  { "" }
+      let(:new_photo)  { "" }
+      it "should not edit the subject" do
+        fill_in "Name", with: new_name
+        click_button submit
+        expect(page).to have_content("Error")
+      end
+    end
+
+    describe "with valid information" do 
+      let(:new_name)  { "New Name" }
+      let(:new_photo) { "New description" }
+      let(:new_twitter) { "twitter" }
+      let(:new_instagram) { "instagram" }
+      let(:submit) { "Submit" }
+
+      before do
+        fill_in "Name",             with: new_name
+        fill_in "Photo",             with: new_photo
+        fill_in "Twitter",             with: new_twitter
+        fill_in "Instagram",             with: new_instagram
+        click_button submit
+      end
+
+      it { should have_title(group.name) }
+      it { should have_content("Subject updated") }
+      it { should have_selector('div.alert.alert-success') }
+      specify { expect(group.reload.subjects.first.name).to  eq new_name }
+      specify { expect(group.reload.subjects.first.twitter).to eq new_twitter }
+      specify { expect(group.reload.subjects.first.instagram).to eq new_instagram }
+      specify { expect(group.reload.subjects.first.photo).to eq new_photo }
+    end
+
+  end
+
+
   describe "empty subject list" do
     let(:group) { FactoryGirl.create(:group) }
     before { visit "/admin/groups/#{group.id}" }

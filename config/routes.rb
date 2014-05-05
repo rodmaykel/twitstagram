@@ -15,6 +15,8 @@ Twitstagram::Application.routes.draw do
 
   match '/admin/groups/:id/subjects', to: 'admin_subjects#create', via: 'post'
   match '/admin/groups/:id/subjects/:s_id/delete', to: 'admin_subjects#destroy', via: 'get'
+  match '/admin/groups/:id/subjects/:s_id', to: 'admin_subjects#update', via: 'patch'
+  match '/admin/groups/:id/subjects/:s_id/edit', to: 'admin_subjects#edit', via: 'get'
 
   #search
   match '/search', to: 'search#view', via: 'get'

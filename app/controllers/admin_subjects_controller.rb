@@ -20,6 +20,23 @@ class AdminSubjectsController < ApplicationController
     redirect_to "/admin/groups/#{@group.id}"
   end
 
+  def edit
+    @group = Group.find(params[:id])
+    @subject = @group.subjects.find(params[:s_id])
+  end
+
+  def update
+    @group = Group.find(params[:id])
+    @subject = @group.subjects.find(params[:s_id])
+    if @subject.update_attributes(subject_params)
+      flash[:success] = "Subject updated"
+      redirect_to "/admin/groups/#{@group.id}"
+    else
+      @errors = @subject.errors
+      render 'edit'
+    end
+  end
+
   private
     def subject_params
       params.require(:subject).permit(:name, :twitter, :instagram, :photo)

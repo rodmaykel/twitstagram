@@ -1,0 +1,19 @@
+<%= form_for(@subject, :url => {:action => "update", :controller => "admin_subjects"}) do |f| %>
+
+  <%= render 'shared/error_messages' %>
+  
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+
+  <%= f.label :twitter %>
+  <%= f.text_field :twitter %>
+
+  <%= f.label :instagram %>
+  <%= f.text_field :instagram %>
+
+  <%= f.label :photo %>
+  <%= f.text_field :photo %>
+
+  <%= f.submit "Submit", class: "btn btn-large btn-primary" %>
+<% end %>
