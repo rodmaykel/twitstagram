@@ -15,5 +15,9 @@ class InstagramGet
     return @client.user_recent_media(id)
   end
 
+  def search(query)
+    return @client.user_search(query)
+  end
+
 end
 

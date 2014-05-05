@@ -1,5 +1,5 @@
 
-- Add editing of subject
+OK- Add editing of subject
 - delete should be POST and protected by CSRF (for created by rails form helper)
 
 - FB login/registration
