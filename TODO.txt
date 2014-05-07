@@ -1,6 +1,6 @@
 
 OK- Add editing of subject
-- delete should be POST and protected by CSRF (for created by rails form helper)
+- delete should be POST and protected by CSRF (form created by rails form helper)
 
 - FB login/registration
 - Authentication in the admin page
@@ -8,10 +8,16 @@ OK- Add editing of subject
 - Following groups by users
 - home page for users
 
+API
+- api specs
+- api implementation
+
+
+
 
 #===========================================
 REFACTOR:
-- photo and tweet creation has too many codes (use factory girl)
+- photo and tweet creation tests has too many codes (use factory girl)
 - 
 
 #===========================================
