@@ -1,4 +1,4 @@
-class AdminGroupsController < ApplicationController
+class Admin::GroupsController < ApplicationController
 
   def create
     @group = Group.new(group_params)

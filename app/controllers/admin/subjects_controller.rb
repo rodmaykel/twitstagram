@@ -1,4 +1,4 @@
-class AdminSubjectsController < ApplicationController
+class Admin::SubjectsController < ApplicationController
   
   def create
     @group = Group.find(params[:id])
@@ -9,7 +9,7 @@ class AdminSubjectsController < ApplicationController
       redirect_to "/admin/groups/#{@group.id}"
     else
       @errors = @subject.errors
-      render 'admin_groups/show'
+      render 'admin/groups/show'
     end
   end
 
