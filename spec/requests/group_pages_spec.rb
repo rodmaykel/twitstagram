@@ -18,6 +18,11 @@ describe "Group Pages" do
   end
 
   describe "view" do
+    before { visit "/groups/#{group.id}/#{group.name.parameterize}"}
+    it {
+      should have_content(subject_1.name)
+      should have_content(subject_2.name)
+    }
     
   end
 

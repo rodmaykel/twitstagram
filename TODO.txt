@@ -9,7 +9,7 @@ OK- Add editing of subject
 - home page for users
 
 API
-- api specs
+OK- api specs
 - api implementation
 
 
