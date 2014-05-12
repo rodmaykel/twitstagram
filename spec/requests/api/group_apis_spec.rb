@@ -26,6 +26,7 @@ describe "Group APIs" do
       expect(response).to be_success
       json = JSON.parse(response.body)
       expect(json['groups'].length).to eq(4)
+      expect(json['total']).to eq(4)
     end
 
     it "with query" do
@@ -55,6 +56,11 @@ describe "Group APIs" do
       json = JSON.parse(response.body)
       expect(json['groups'].length).to eq(0)
     end
+
+    # TODO: testing of pagination
+  end
+
+  describe "subjects" do
 
   end
 

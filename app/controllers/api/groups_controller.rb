@@ -2,16 +2,15 @@ class Api::GroupsController < Api::ApisController
   
   def index
     if ((params[:q]) && (params[:category]))
-      @groups = Group.where(["category LIKE ? AND name LIKE ?", params[:category], "%#{params[:q]}%"])
+      @groups = Group.where(["category LIKE ? AND name LIKE ?", params[:category], "%#{params[:q]}%"]).paginate(page: params[:page])
     elsif (params[:q]) 
-      @groups = Group.where(["name LIKE ?", "%#{params[:q]}%"])
+      @groups = Group.where(["name LIKE ?", "%#{params[:q]}%"]).paginate(page: params[:page])
     elsif (params[:category])
-      @groups = Group.where(["category LIKE ?", params[:category]])
+      @groups = Group.where(["category LIKE ?", params[:category]]).paginate(page: params[:page])
     else
       @groups = Group.all().paginate(page: params[:page])
     end
-
-    @json = { groups: @groups };
+    @json = { groups: @groups, total: @groups.total_entries };
     respond_to do |format|
       format.json { render json: @json }
     end
