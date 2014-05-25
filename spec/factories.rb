@@ -20,4 +20,14 @@ FactoryGirl.define do
     sequence(:name) { |n|  "Name_#{n}" }
     group
   end
+  factory :tweet do
+    sequence(:text) { |n| "Text #{n}" }
+    sequence(:created) { |n| n.hours.ago }
+    sequence(:photo) { |n| "Photo #{n}" }
+    sequence(:tweet_id) { |n| "tweet_id_#{n}" }
+    subject
+  end
+
+
+
 end

@@ -17,22 +17,37 @@ class Api::GroupsController < Api::ApisController
   end
 
   def show
-
+    @group = Group.find(params[:id]);
+    @subjects = @group.subjects.paginate(page: params[:page])
+    @tweets = @group.tweets.paginate(page: params[:page])
+    @photos = @group.photos.paginate(page: params[:page])
   end
 
   def subjects
     @group = Group.find(params[:id]);
     @subjects = @group.subjects.paginate(page: params[:page])
+    @json = { total: @subjects.total_entries, subjects: @subjects }
+    respond_to do |format|
+      format.json { render json: @json }
+    end
   end
 
   def tweets
     @group = Group.find(params[:id]);
     @tweets = @group.tweets.paginate(page: params[:page])
+    @json = { total: @tweets.total_entries, tweets: @tweets }
+    respond_to do |format|
+      format.json { render json: @json }
+    end
   end
 
   def photos
     @group = Group.find(params[:id]);
     @photos = @group.photos.paginate(page: params[:page])
+    @json = { total: @photos.total_entries, photos: @photos }
+    respond_to do |format|
+      format.json { render json: @json }
+    end
   end
 
 end

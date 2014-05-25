@@ -9,8 +9,8 @@ describe "Group APIs" do
         group.subjects.first.photos.create!(caption: "caption", created: 1.day.ago, photo: "photo", instagram_id: "#{n}")
     end
     3.times do |n|
-        group.subjects.last.tweets.create!(text: "lorem ipsum", created: 1.hour.ago, photo: "photo", tweet_id: "#{n}")
-        group.subjects.last.photos.create!(caption: "caption", created: 1.day.ago, photo: "photo", instagram_id: "#{n}")
+        group.subjects.last.tweets.create!(text: "lorem ipsum", created: 2.hour.ago, photo: "photo", tweet_id: "#{n}")
+        group.subjects.last.photos.create!(caption: "caption", created: 2.day.ago, photo: "photo", instagram_id: "#{n}")
     end
   end
 
@@ -58,10 +58,50 @@ describe "Group APIs" do
     end
 
     # TODO: testing of pagination
+  
+    describe "shows group with :id" do
+      it "with non-existing id" do
+
+      end
+
+      it "with existing id" do
+
+      end
+    end
   end
 
   describe "subjects" do
 
+    it "shows all subjects" do
+      get "/api/groups/#{group.id}/subjects", {}, { "Accept" => "application/json" }
+      expect(response).to be_success
+      json = JSON.parse(response.body)
+      expect(json['subjects'].length).to eq(30)
+      expect(json['total']).to eq(40)
+    end
   end
+
+  describe "tweets" do
+    it "shows all tweets" do
+      get "/api/groups/#{group.id}/tweets", {}, { "Accept" => "application/json" }
+      expect(response).to be_success
+      json = JSON.parse(response.body)
+      expect(json['tweets'].length).to eq(8)
+      expect(json['total']).to eq(8)
+    end
+  
+  end
+
+  describe "photos" do
+    it "shows all subjects" do
+      get "/api/groups/#{group.id}/photos", {}, { "Accept" => "application/json" }
+      expect(response).to be_success
+      json = JSON.parse(response.body)
+      expect(json['photos'].length).to eq(8)
+      expect(json['total']).to eq(8)
+    end
+  
+  end
+
 
 end
