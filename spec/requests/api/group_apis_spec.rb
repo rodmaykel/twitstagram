@@ -59,22 +59,26 @@ describe "Group APIs" do
 
     # TODO: testing of pagination
   
-    describe "shows group with :id" do
-      it "with non-existing id" do
+  end
 
-      end
+  describe "group show" do
+    it "with non-existing id" do
+      get "/api/groups/1000000", {}, { "Accept" => "application/json" }
+      expect(response.status).to eq(404)
+      json = JSON.parse(response.body)
+      expect(json['error_message']).to eq("Group not found") 
+    end
 
-      it "with existing id" do
-        get "/api/groups/#{group.id}", {}, { "Accept" => "application/json" }
-        expect(response).to be_success
-        json = JSON.parse(response.body)
-        expect(json['subjects'].length).to eq(40)
-        expect(json['tweets'].length).to eq(8)
-        expect(json['photos'].length).to eq(8)
-        expect(json['name']).to eq(group.name)
-        expect(json['description']).to eq(group.description)
-        
-      end
+    it "with existing id" do
+      get "/api/groups/#{group.id}", {}, { "Accept" => "application/json" }
+      expect(response).to be_success
+      json = JSON.parse(response.body)
+      expect(json['subjects'].length).to eq(40)
+      expect(json['tweets'].length).to eq(8)
+      expect(json['photos'].length).to eq(8)
+      expect(json['name']).to eq(group.name)
+      expect(json['description']).to eq(group.description)
+      
     end
   end
 
