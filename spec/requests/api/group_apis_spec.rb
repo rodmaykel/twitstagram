@@ -65,7 +65,15 @@ describe "Group APIs" do
       end
 
       it "with existing id" do
-
+        get "/api/groups/#{group.id}", {}, { "Accept" => "application/json" }
+        expect(response).to be_success
+        json = JSON.parse(response.body)
+        expect(json['subjects'].length).to eq(40)
+        expect(json['tweets'].length).to eq(8)
+        expect(json['photos'].length).to eq(8)
+        expect(json['name']).to eq(group.name)
+        expect(json['description']).to eq(group.description)
+        
       end
     end
   end
@@ -76,7 +84,7 @@ describe "Group APIs" do
       get "/api/groups/#{group.id}/subjects", {}, { "Accept" => "application/json" }
       expect(response).to be_success
       json = JSON.parse(response.body)
-      expect(json['subjects'].length).to eq(30)
+      expect(json['subjects'].length).to eq(40)
       expect(json['total']).to eq(40)
     end
   end

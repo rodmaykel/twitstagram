@@ -35,6 +35,7 @@ Twitstagram::Application.routes.draw do
 
   namespace :api do
     match '/groups', to: 'groups#index', via: 'get'
+    match '/groups/:id', to: 'groups#show', via: 'get'
     match '/groups/:id/subjects', to: 'groups#subjects', via: 'get'
     match '/groups/:id/tweets', to: 'groups#tweets', via: 'get'
     match '/groups/:id/photos', to: 'groups#photos', via: 'get'

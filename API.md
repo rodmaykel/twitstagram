@@ -28,7 +28,7 @@ BASE_URL: http://example.com/api
 
 *Response*
   - GroupObject
-  - subjects: array of SubjectObject (first page)
+  - subjects: array of SubjectObject (all)
   - tweets: array of TweetObject (first page)
   - photos: array of PhotoObject (first page)
 
@@ -37,7 +37,7 @@ BASE_URL: http://example.com/api
 #### GET /groups/:id/subjects
 
 *Parameters*
-  - page (optional, default=1)
+  NONE
 
 *Response*
   - total

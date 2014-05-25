@@ -18,15 +18,22 @@ class Api::GroupsController < Api::ApisController
 
   def show
     @group = Group.find(params[:id]);
-    @subjects = @group.subjects.paginate(page: params[:page])
+    @subjects = @group.subjects
     @tweets = @group.tweets.paginate(page: params[:page])
     @photos = @group.photos.paginate(page: params[:page])
+    @json = @group.as_json
+    @json[:subjects] = @subjects
+    @json[:tweets] = @tweets
+    @json[:photos] = @photos
+    respond_to do |format|
+      format.json { render json: @json }
+    end
   end
 
   def subjects
     @group = Group.find(params[:id]);
-    @subjects = @group.subjects.paginate(page: params[:page])
-    @json = { total: @subjects.total_entries, subjects: @subjects }
+    @subjects = @group.subjects
+    @json = { total: @subjects.count, subjects: @subjects }
     respond_to do |format|
       format.json { render json: @json }
     end
